@@ -25,6 +25,13 @@ gp.fs.0.func.3 = ec.app.tutorial4.Sub
 gp.fs.0.func.3.nc = nc2
 gp.fs.0.func.4 = ec.app.tutorial4.Mul
 gp.fs.0.func.4.nc = nc2
+#gp.fs.0.func.5 = ec.app.tutorial4.Rand
+#gp.fs.0.func.5.nc = nc0
+
+generations = 100
+#gp.koza.xover.maxdepth = 25
+#gp.koza.mutate.maxdepth = 25
+#pop.subpop.0.size = 1024
 
 eval.problem = ec.app.tutorial4.MultiValuedRegression
 eval.problem.data = ec.app.tutorial4.DoubleData

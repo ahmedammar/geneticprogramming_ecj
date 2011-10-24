@@ -5,19 +5,23 @@
 */
 
 
-package ec.app.tutorial4;
+package ec.app.epl2012_basic;
 import ec.util.*;
 import ec.*;
 import ec.gp.*;
 import ec.gp.koza.*;
 import ec.simple.*;
+import java.lang.Math;
 
 public class MultiValuedRegression extends GPProblem implements SimpleProblemForm
     {
-    public double currentX;
-    public double currentY;
-    
+    public int teamA;
+    public int teamB;
+    public int gameWeek;
+   
     public DoubleData input;
+
+    public SqliteDB db;
 
     public Object clone()
         {
@@ -31,6 +35,9 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
         {
         // very important, remember this
         super.setup(state,base);
+
+        db = new SqliteDB();
+        db.init();
 
         // set up our input -- don't want to use the default base, it's unsafe here
         input = (DoubleData) state.parameters.getInstanceForParameterEq(
@@ -49,17 +56,29 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
             double sum = 0.0;
             double expectedResult;
             double result;
-            for (int y=0;y<100;y++)
+            for (int y=0;y<20;y++)
                 {
-                currentX = state.random[threadnum].nextDouble();
-                currentY = state.random[threadnum].nextDouble();
-                expectedResult = currentX*currentX*currentY + currentX*currentY + currentY;
+                //gameWeek = y;
+                while(true) {
+                    teamA = Math.abs(state.random[threadnum].nextInt()) % 20 + 1;
+                    teamB = Math.abs(state.random[threadnum].nextInt()) % 20 + 1;
+                    //currentX = state.random[threadnum].nextDouble();
+                    //currentY = state.random[threadnum].nextDouble();
+                    expectedResult = db.vsdata[teamA][teamB];//currentX*currentX*currentY + currentX*currentY + currentY;
+                    gameWeek = db.gwdata[teamA][teamB];
+                    if (expectedResult != Double.POSITIVE_INFINITY)
+                        break; 
+                }
+                
+                //System.out.format("GW%d teamA: %s teamB: %s (%f)\n", gameWeek, db.teams[teamA], db.teams[teamB], expectedResult);
+               // System.out.println("gw:"+y+" teamA: "+db.sumdata[teamA][y].name+" teamB: "+db.sumdata[teamB][y].name+" result:"+expectedResult);
+
                 ((GPIndividual)ind).trees[0].child.eval(
                     state,threadnum,input,stack,((GPIndividual)ind),this);
 
                 result = Math.abs(expectedResult - input.x);
                 if (result <= 0.01) hits++;
-                sum += result;                  
+                sum += result;
                 }
 
             // the fitness better be KozaFitness!

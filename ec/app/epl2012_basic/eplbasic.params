@@ -1,0 +1,64 @@
+# Copyright 2006 by Sean Luke and George Mason University
+# Licensed under the Academic Free License version 3.0
+# See the file "LICENSE" for more information
+
+parent.0 = ../../gp/koza/koza.params
+
+# the next four items are already defined in koza.params, but we
+# put them here to be clear.
+
+# We have one function set, of class GPFunctionSet
+gp.fs.size = 1
+gp.fs.0 = ec.gp.GPFunctionSet
+# We'll call the function set "f0".
+gp.fs.0.name = f0
+
+# We have five functions in the function set.  They are:
+gp.fs.0.size = 18
+gp.fs.0.func.0 = ec.app.epl2012_basic.HA
+gp.fs.0.func.0.nc = nc0
+gp.fs.0.func.0 = ec.app.epl2012_basic.HB
+gp.fs.0.func.0.nc = nc0
+gp.fs.0.func.1 = ec.app.epl2012_basic.GFA
+gp.fs.0.func.1.nc = nc0
+gp.fs.0.func.2 = ec.app.epl2012_basic.GFB
+gp.fs.0.func.2.nc = nc0
+gp.fs.0.func.3 = ec.app.epl2012_basic.GAA
+gp.fs.0.func.3.nc = nc0
+gp.fs.0.func.4 = ec.app.epl2012_basic.GAB
+gp.fs.0.func.4.nc = nc0
+gp.fs.0.func.5 = ec.app.epl2012_basic.WA
+gp.fs.0.func.5.nc = nc0
+gp.fs.0.func.6 = ec.app.epl2012_basic.WB
+gp.fs.0.func.6.nc = nc0
+gp.fs.0.func.7 = ec.app.epl2012_basic.LA
+gp.fs.0.func.7.nc = nc0
+gp.fs.0.func.8 = ec.app.epl2012_basic.LB
+gp.fs.0.func.8.nc = nc0
+gp.fs.0.func.9 = ec.app.epl2012_basic.DA
+gp.fs.0.func.9.nc = nc0
+gp.fs.0.func.10 = ec.app.epl2012_basic.DB
+gp.fs.0.func.10.nc = nc0
+gp.fs.0.func.11 = ec.app.epl2012_basic.MA
+gp.fs.0.func.11.nc = nc0
+gp.fs.0.func.12 = ec.app.epl2012_basic.MB
+gp.fs.0.func.12.nc = nc0
+gp.fs.0.func.13 = ec.app.epl2012_basic.Add
+gp.fs.0.func.13.nc = nc2
+gp.fs.0.func.14 = ec.app.epl2012_basic.Sub
+gp.fs.0.func.14.nc = nc2
+gp.fs.0.func.15 = ec.app.epl2012_basic.Mul
+gp.fs.0.func.15.nc = nc2
+gp.fs.0.func.16 = ec.app.epl2012_basic.Div
+gp.fs.0.func.16.nc = nc2
+gp.fs.0.func.17 = ec.app.epl2012_basic.Rand
+gp.fs.0.func.17.nc = nc0
+
+#generations = 100
+#gp.koza.xover.maxdepth = 25
+#gp.koza.mutate.maxdepth = 25
+#pop.subpop.0.size = 1024
+
+eval.problem = ec.app.epl2012_basic.MultiValuedRegression
+eval.problem.data = ec.app.epl2012_basic.DoubleData
+

@@ -77,6 +77,7 @@ ec/vector/breed/*.java \
 ec/parsimony/*.java\
 ec/rule/*.java \
 ec/rule/breed/*.java \
+ec/app/epl2012/*.java
 
 all: base
 
