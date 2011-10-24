@@ -4,9 +4,10 @@ import java.sql.*;
 public class SqliteDB
 {
     public PLData[][] sumdata = new PLData[21][10];
+    public double[][] twdata = new double[10][21];
     public double[][] vsdata = new double[21][21];
-    public int[][] gwdata = new int[21][21];
-
+    public int[][] gwdata = new int[10][21];
+    public String[] teams = new String[21];
     public void init()
     {
        try 
@@ -43,16 +44,16 @@ public class SqliteDB
                 int gf = r.getInt("goalsfor");
                 int ga = r.getInt("goalsagainst");
                 if(gf > ga)
-                    result = 1.0d;
+                    result = 3.0d;
                 if(ga > gf)
-                    result = 0.0d;
+                    result = -3.0d;
                 if(ga == gf)
-                    result = 0.5d;
+                    result = 1.0d;
                 vsdata[hid][aid] = result;
             }
 
             // fill gwdata
-            for (int i=0; i<21; i++)
+            for (int i=0; i<10; i++)
                 for (int j=0; j<21; j++)
                     gwdata[i][j] = 0;
             r = s.executeQuery("select * from games");
@@ -60,8 +61,35 @@ public class SqliteDB
                 int hid = r.getInt("homeid");
                 int aid = r.getInt("awayid");
                 int gw = r.getInt("gameweek");
-                gwdata[hid][aid] = gw;
+                gwdata[gw][hid] = aid;
+                gwdata[gw][aid] = hid;
             }
+
+            // fill names
+            r = s.executeQuery("select * from teams");
+            while (r.next()) {
+                int tid = r.getInt("id");
+                teams[tid] = r.getString("name");
+            }
+
+            // fill twdata
+            r = s.executeQuery("select * from teamweek");
+            while (r.next()) {
+                double result = Double.POSITIVE_INFINITY;
+                int gw = r.getInt("gameweek");
+                int tid = r.getInt("teamid");
+                int gf = r.getInt("goalsfor");
+                int ga = r.getInt("goalsagainst");
+                if(gf > ga)
+                    result = 3.0d;
+                if(ga > gf)
+                    result = 0.0d;
+                if(ga == gf)
+                    result = 1.0d;
+                twdata[gw][tid] = result;
+            }
+
+
        }
        catch (Exception e)
        {

@@ -44,7 +44,7 @@ public class Rand extends ERC
 
     public void resetNode(EvolutionState state, int thread) 
     { 
-        value = state.random[thread].nextDouble() - 1.0; 
+        value = state.random[thread].nextDouble();// - 1.0; 
     }
 /*
     public void mutateNode(EvolutionState state, int thread) {
