@@ -81,11 +81,11 @@ public class SqliteDB
                 int gf = r.getInt("goalsfor");
                 int ga = r.getInt("goalsagainst");
                 if(gf > ga)
-                    result = 3.0d;
-                if(ga > gf)
-                    result = 0.0d;
-                if(ga == gf)
                     result = 1.0d;
+                if(ga > gf)
+                    result = -1.0d;
+                if(ga == gf)
+                    result = 0.0d;
                 twdata[gw][tid] = result;
             }
 
