@@ -62,13 +62,19 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
             double expectedResult;
             double result;
 
-            for (gameWeek=2;gameWeek<10;gameWeek++)
+            for (gameWeek=1;gameWeek<9;gameWeek++)
             {
                 expectedResult = db.twdata[gameWeek][teamA];
                 if (expectedResult == Double.POSITIVE_INFINITY)
                     continue;
 
+                if (db.sumdata[teamA][gameWeek-1] == null)
+                    continue;
+
                 teamB = db.gwdata[gameWeek][teamA];
+                if (db.sumdata[teamB][gameWeek-1] == null)
+                    continue;
+
                  ((GPIndividual)ind).trees[0].child.eval(
                     state,threadnum,input,stack,((GPIndividual)ind),this);
 
