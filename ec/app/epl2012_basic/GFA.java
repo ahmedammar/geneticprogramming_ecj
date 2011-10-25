@@ -35,7 +35,7 @@ public class GFA extends GPNode
         {
         DoubleData rd = ((DoubleData)(input));
         MultiValuedRegression p = ((MultiValuedRegression)problem);
-        rd.x = p.db.sumdata[p.teamA][p.gameWeek].gf;
+        rd.x = p.db.sumdata[p.teamA][p.gameWeek-1].gf;
         }
     }
 

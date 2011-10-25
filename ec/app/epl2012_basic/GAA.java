@@ -35,7 +35,7 @@ public class GAA extends GPNode
         {
         DoubleData rd = ((DoubleData)(input));
         MultiValuedRegression p = ((MultiValuedRegression)problem);
-        rd.x = p.db.sumdata[p.teamA][p.gameWeek].ga;
+        rd.x = p.db.sumdata[p.teamA][p.gameWeek-1].ga;
         }
     }
 

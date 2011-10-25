@@ -36,7 +36,7 @@ public class WB extends GPNode
         DoubleData rd = ((DoubleData)(input));
         //rd.x = ((MultiValuedRegression)problem).currentX;
         MultiValuedRegression p = ((MultiValuedRegression)problem);
-        rd.x = p.db.sumdata[p.teamB][p.gameWeek].w/p.gameWeek;
+        rd.x = p.db.sumdata[p.teamB][p.gameWeek-1].w/p.gameWeek;
         }
     }
 

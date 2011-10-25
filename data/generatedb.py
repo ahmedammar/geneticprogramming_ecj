@@ -102,14 +102,10 @@ for teamid in c1.fetchall():
     c1.execute("SELECT * FROM TeamWeek WHERE TeamWeek.TeamID=%i" % teamid[0])
     morale = gw = tid = gid = h = gf = ga = w = l = d = 0
     for week in c1.fetchall():
-        gw=week[0]+1 #Sums are a week after
-        if (gw == 2):
-            c1.execute("INSERT INTO TeamWeekSum VALUES \
-                    ('%i','%i','%i','%i','%i','%i','%i','%i','%i', '%i')" % (1, 
-                    tid, gid, h, gf, ga, w, l, d, morale))
+        gw=week[0] #Sums are a week after
         tid=week[1]
         gid=week[2]
-        h+=week[3]
+        h=week[3]
         gf+=week[4]
         ga+=week[5]
         w+=week[6]
