@@ -9,4 +9,10 @@ public class PLData
     public double l;
     public double d;
     public double morale;
+
+    public void dump(String t)
+    {
+        System.out.format("h%s=%f; gf%s=%f; ga%s=%f; w%s=%f; l%s=%f; d%s=%f; m%s=%f;\n",
+                t, home, t, gf, t, ga, t, w, t, l, t, d, t, morale);
+    }
 }

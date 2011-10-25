@@ -38,7 +38,7 @@ public class Div extends GPNode
         children[1].eval(state,thread,input,stack,individual,problem);
         if (rd.x==0.0) 
             // the answer is 1.0 since the denominator was 0.0
-            rd.x = 1.0;
+            rd.x = rd.x / 1E-20;
         else
             {
             result = rd.x;

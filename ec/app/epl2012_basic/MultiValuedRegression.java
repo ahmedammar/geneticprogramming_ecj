@@ -44,6 +44,13 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
 
         state.output.message("Chosen team: "+db.teams[teamA]);
 
+        double expectedResult = db.twdata[9][teamA];
+        teamB = db.gwdata[9][teamA];
+        db.sumdata[teamA][9].dump("a");
+        db.sumdata[teamB][9].dump("b");
+
+        System.out.println("Expected output: "+expectedResult);
+
         // set up our input -- don't want to use the default base, it's unsafe here
         input = (DoubleData) state.parameters.getInstanceForParameterEq(
             base.push(P_DATA), null, DoubleData.class);

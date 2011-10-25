@@ -12,7 +12,7 @@ import ec.util.*;
 
 public class If extends GPNode
     {
-    public String toString() { return "if"; }
+    public String toString() { return "IF"; }
 
     public void checkConstraints(final EvolutionState state,
         final int tree,
