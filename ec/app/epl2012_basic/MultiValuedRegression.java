@@ -55,7 +55,7 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
         final int subpopulation,
         final int threadnum)
         {
-        //if (!ind.evaluated)  // don't bother reevaluating
+        if (!ind.evaluated)  // don't bother reevaluating
             {
             int hits = 0;
             double sum = 0.0;
@@ -119,7 +119,7 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
             f.setStandardizedFitness(state,(float)sum);
             //f.hits = hits;
             //System.out.println("fitness: "+f.fitness());
-            //ind.evaluated = true;
+            ind.evaluated = true;
             }
         }
     }
