@@ -73,6 +73,10 @@ public class SqliteDB
             }
 
             // fill twdata
+            for (int i=0; i<10; i++)
+                for (int j=0; j<21; j++)
+                    twdata[i][j] = Double.POSITIVE_INFINITY;
+
             r = s.executeQuery("select * from teamweek");
             while (r.next()) {
                 double result = Double.POSITIVE_INFINITY;

@@ -100,7 +100,10 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
             }*/
             for (gameWeek=1;gameWeek<10;gameWeek++)
             {
-                expectedResult = db.twdata[gameWeek][teamA];//currentX*currentX*currentY + currentX*currentY + currentY;
+                expectedResult = db.twdata[gameWeek][teamA];
+                if (expectedResult == Double.POSITIVE_INFINITY)
+                    continue;
+
                 teamB = db.gwdata[gameWeek][teamA];
                  ((GPIndividual)ind).trees[0].child.eval(
                     state,threadnum,input,stack,((GPIndividual)ind),this);
@@ -113,11 +116,10 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
                 sum += result;
             }
 
-            //sum /= 40;
             // the fitness better be KozaFitness!
             KozaFitness f = ((KozaFitness)ind.fitness);
             f.setStandardizedFitness(state,(float)sum);
-            //f.hits = hits;
+            f.hits = hits;
             //System.out.println("fitness: "+f.fitness());
             ind.evaluated = true;
             }
