@@ -14,7 +14,7 @@ def winlosedraw(gf, ga):
         return (0,0,1)
 
 db_file="./epldata2012.db"
-csv_file="./epldata2012.csv"
+csv_file="./data/epldata2012.csv"
 
 os.system("rm ./epldata2012.db")
 
@@ -100,9 +100,13 @@ for teamid in c1.fetchall():
 c1.execute("SELECT * FROM Teams")
 for teamid in c1.fetchall():
     c1.execute("SELECT * FROM TeamWeek WHERE TeamWeek.TeamID=%i" % teamid[0])
-    gw = tid = gid = h = gf = ga = w = l = d = 0
+    morale = gw = tid = gid = h = gf = ga = w = l = d = 0
     for week in c1.fetchall():
-        gw=week[0]
+        gw=week[0]+1 #Sums are a week after
+        if (gw == 2):
+            c1.execute("INSERT INTO TeamWeekSum VALUES \
+                    ('%i','%i','%i','%i','%i','%i','%i','%i','%i', '%i')" % (1, 
+                    tid, gid, h, gf, ga, w, l, d, morale))
         tid=week[1]
         gid=week[2]
         h+=week[3]
