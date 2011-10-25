@@ -13,12 +13,43 @@ gp.fs.0 = ec.gp.GPFunctionSet
 # We'll call the function set "f0".
 gp.fs.0.name = f0
 
+gp.type.a.size = 2
+gp.type.a.0.name = bool
+gp.type.a.1.name = nil
+gp.type.s.size = 1
+gp.type.s.0.name = bool-or-nil
+gp.type.s.0.size = 2
+gp.type.s.0.member.0 = bool
+gp.type.s.0.member.1 = nil
+
+gp.nc.size = 10
+
+gp.nc.7 = ec.gp.GPNodeConstraints
+gp.nc.7.name = b3
+gp.nc.7.returns = nil
+gp.nc.7.size = 3
+gp.nc.7.child.0 = bool
+gp.nc.7.child.1 = nil
+gp.nc.7.child.2 = nil
+
+gp.nc.8 = ec.gp.GPNodeConstraints
+gp.nc.8.name = b1
+gp.nc.8.returns = bool
+gp.nc.8.size = 2
+gp.nc.8.child.0 = nil
+gp.nc.8.child.1 = nil
+
+gp.nc.9 = ec.gp.GPNodeConstraints
+gp.nc.9.name = b0
+gp.nc.9.returns = bool
+gp.nc.9.size = 0
+
 # We have five functions in the function set.  They are:
-gp.fs.0.size = 19
+gp.fs.0.size = 20
 gp.fs.0.func.0 = ec.app.epl2012_basic.HA
-gp.fs.0.func.0.nc = nc0
+gp.fs.0.func.0.nc = b0
 gp.fs.0.func.0 = ec.app.epl2012_basic.HB
-gp.fs.0.func.0.nc = nc0
+gp.fs.0.func.0.nc = b0
 gp.fs.0.func.1 = ec.app.epl2012_basic.GFA
 gp.fs.0.func.1.nc = nc0
 gp.fs.0.func.2 = ec.app.epl2012_basic.GFB
@@ -51,20 +82,22 @@ gp.fs.0.func.15 = ec.app.epl2012_basic.Mul
 gp.fs.0.func.15.nc = nc2
 gp.fs.0.func.16 = ec.app.epl2012_basic.Div
 gp.fs.0.func.16.nc = nc2
-gp.fs.0.func.17 = ec.app.epl2012_basic.Inv
-gp.fs.0.func.17.nc = nc1
-gp.fs.0.func.18 = ec.app.epl2012_basic.Rand
-gp.fs.0.func.18.nc = nc0
+gp.fs.0.func.17 = ec.app.epl2012_basic.If
+gp.fs.0.func.17.nc =  b3
+gp.fs.0.func.18 = ec.app.epl2012_basic.GreaterThan
+gp.fs.0.func.18.nc =  b1
+gp.fs.0.func.19 = ec.app.epl2012_basic.Rand
+gp.fs.0.func.19.nc = nc0
 
 #gp.koza.half.min-depth = 6
 #gp.koza.half.max-depth = 10
-gp.koza.half.growp = 0.7
+#gp.koza.half.growp = 0.7
 
 #breed.elite.0 = 10
 
-gp.koza.ns.terminals = 0.5
-gp.koza.ns.nonterminals = 0.4
-gp.koza.ns.root = 0.1
+#gp.koza.ns.terminals = 0.5
+#gp.koza.ns.nonterminals = 0.4
+#gp.koza.ns.root = 0.1
 
 generations = 50
 #gp.koza.xover.maxdepth = 25
