@@ -61,43 +61,7 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
             double sum = 0.0;
             double expectedResult;
             double result;
-            /*teamB=teamA;
-            for (teamA=1;teamA<21;teamA++)
-            {
-                expectedResult = db.vsdata[teamA][teamB];//currentX*currentX*currentY + currentX*currentY + currentY;
-                gameWeek = db.gwdata[teamA][teamB];
-                if (expectedResult == Double.POSITIVE_INFINITY)
-                    continue; 
 
-                ((GPIndividual)ind).trees[0].child.eval(
-                    state,threadnum,input,stack,((GPIndividual)ind),this);
-
-                result = Math.abs(expectedResult - input.x);
-
-                //System.out.format("GW%d teamA: %s teamB: %s (%.2f) %.4f\n", gameWeek, db.teams[teamA], db.teams[teamB], expectedResult, input.x);
-                if (result <= 0.000001) hits++;
-                //if (result < 1E-10) result = 0.0;
-                sum += result;
-            }
-            teamA=teamB;
-            //for (teamA=1;teamA<21;teamA++)
-            for (teamB=1;teamB<21;teamB++)
-            {
-                expectedResult = db.vsdata[teamA][teamB];//currentX*currentX*currentY + currentX*currentY + currentY;
-                gameWeek = db.gwdata[teamA][teamB];
-                if (expectedResult == Double.POSITIVE_INFINITY)
-                    continue;
-
-                ((GPIndividual)ind).trees[0].child.eval(
-                    state,threadnum,input,stack,((GPIndividual)ind),this);
-
-                result = Math.abs(expectedResult - input.x);
-
-                //System.out.format("GW%d teamA: %s teamB: %s (%.2f) %.4f\n", gameWeek, db.teams[teamA], db.teams[teamB], expectedResult, input.x);
-                if (result <= 0.000001) hits++;
-                //if (result < 1E-10) result = 0.0;
-                sum += result;
-            }*/
             for (gameWeek=1;gameWeek<10;gameWeek++)
             {
                 expectedResult = db.twdata[gameWeek][teamA];
@@ -108,11 +72,10 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
                  ((GPIndividual)ind).trees[0].child.eval(
                     state,threadnum,input,stack,((GPIndividual)ind),this);
 
-                //System.out.format("GW%d teamA: %s teamB: %s (%.2f) %.4f\n", gameWeek, db.teams[teamA], db.teams[teamB], expectedResult, input.x);
+                //System.out.format("GW%d %s vs %s (%.2f) [%.2f]\n", gameWeek, db.teams[teamA], db.teams[teamB], expectedResult, input.x);
                 result = Math.abs(expectedResult - input.x);
 
                 if (result <= 0.001) hits++;
-                //if (result < 1E-10) result = 0.0;
                 sum += result;
             }
 
@@ -120,7 +83,6 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
             KozaFitness f = ((KozaFitness)ind.fitness);
             f.setStandardizedFitness(state,(float)sum);
             f.hits = hits;
-            //System.out.println("fitness: "+f.fitness());
             ind.evaluated = true;
             }
         }

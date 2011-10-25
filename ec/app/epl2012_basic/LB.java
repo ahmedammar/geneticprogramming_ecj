@@ -35,7 +35,7 @@ public class LB extends GPNode
         {
         DoubleData rd = ((DoubleData)(input));
         MultiValuedRegression p = ((MultiValuedRegression)problem);
-        rd.x = p.db.sumdata[p.teamB][p.gameWeek].l;
+        rd.x = p.db.sumdata[p.teamB][p.gameWeek].l/p.gameWeek;
         }
     }
 

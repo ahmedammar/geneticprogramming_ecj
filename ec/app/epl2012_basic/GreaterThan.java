@@ -10,9 +10,9 @@ import ec.*;
 import ec.gp.*;
 import ec.util.*;
 
-public class WB extends GPNode
+public class GreaterThan extends GPNode
     {
-    public String toString() { return "wb"; }
+    public String toString() { return ">"; }
 
     public void checkConstraints(final EvolutionState state,
         final int tree,
@@ -20,12 +20,11 @@ public class WB extends GPNode
         final Parameter individualBase)
         {
         super.checkConstraints(state,tree,typicalIndividual,individualBase);
-        if (children.length!=0)
+        if (children.length!=2)
             state.output.error("Incorrect number of children for node " + 
                 toStringForError() + " at " +
                 individualBase);
         }
-
     public void eval(final EvolutionState state,
         final int thread,
         final GPData input,
@@ -33,10 +32,13 @@ public class WB extends GPNode
         final GPIndividual individual,
         final Problem problem)
         {
+        double result;
         DoubleData rd = ((DoubleData)(input));
-        //rd.x = ((MultiValuedRegression)problem).currentX;
-        MultiValuedRegression p = ((MultiValuedRegression)problem);
-        rd.x = p.db.sumdata[p.teamB][p.gameWeek].w/p.gameWeek;
+
+        children[0].eval(state, thread, input, stack, individual, problem);
+        result = rd.x;
+        children[1].eval(state, thread, input, stack, individual, problem);
+        rd.x = (result > rd.x) ? 1.0 : 0.0;
         }
     }
 

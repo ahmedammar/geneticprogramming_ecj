@@ -1,0 +1,4 @@
+java ec.Evolve -file ec/app/epl2012_basic/eplbasic.params -p gp.tree.print-style=c -p stat.gather-full=true
+javac ec/app/epl2012_basic/*.java
+javac ec/app/epl2012_basic/*.java
+java -Xmn100M -Xms500M -Xmx1G -d64 ec.Evolve -file ec/app/epl2012_basic/eplbasic.params -p gp.tree.print-style=c -p eval.problem.team=8

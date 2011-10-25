@@ -45,7 +45,7 @@ gp.nc.9.returns = bool
 gp.nc.9.size = 0
 
 # We have five functions in the function set.  They are:
-gp.fs.0.size = 20
+gp.fs.0.size = 21
 gp.fs.0.func.0 = ec.app.epl2012_basic.HA
 gp.fs.0.func.0.nc = b0
 gp.fs.0.func.0 = ec.app.epl2012_basic.HB
@@ -86,8 +86,10 @@ gp.fs.0.func.17 = ec.app.epl2012_basic.If
 gp.fs.0.func.17.nc =  b3
 gp.fs.0.func.18 = ec.app.epl2012_basic.GreaterThan
 gp.fs.0.func.18.nc =  b1
-gp.fs.0.func.19 = ec.app.epl2012_basic.Rand
+gp.fs.0.func.19 = ec.app.epl2012_basic.One
 gp.fs.0.func.19.nc = nc0
+gp.fs.0.func.20 = ec.app.epl2012_basic.Zero
+gp.fs.0.func.20.nc = nc0
 
 #gp.koza.half.min-depth = 6
 #gp.koza.half.max-depth = 10
@@ -115,3 +117,7 @@ pop.subpop.0.duplicate-retries = 10
 eval.problem = ec.app.epl2012_basic.MultiValuedRegression
 eval.problem.data = ec.app.epl2012_basic.DoubleData
 
+stat.num-children = 1 
+stat.child.0 = ec.gp.koza.KozaShortStatistics 
+stat.child.0.gather-full = true 
+stat.child.0.file = $out2.stat

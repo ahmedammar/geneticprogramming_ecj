@@ -36,7 +36,7 @@ public class DA extends GPNode
         DoubleData rd = ((DoubleData)(input));
         //rd.x = ((MultiValuedRegression)problem).currentX;
         MultiValuedRegression p = ((MultiValuedRegression)problem);
-        rd.x = p.db.sumdata[p.teamA][p.gameWeek].d;
+        rd.x = p.db.sumdata[p.teamA][p.gameWeek].d/p.gameWeek;
         }
     }
 
