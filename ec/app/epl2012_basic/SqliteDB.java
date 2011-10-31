@@ -3,11 +3,13 @@ import java.sql.*;
 
 public class SqliteDB
 {
-    public PLData[][] sumdata = new PLData[21][10];
-    public double[][] twdata = new double[10][21];
-    public double[][] vsdata = new double[21][21];
-    public int[][] gwdata = new int[10][21];
-    public String[] teams = new String[21];
+    int T = 20 + 1;
+    int W = 10 + 1;
+    public PLData[][] sumdata = new PLData[T][W];
+    public double[][] twdata = new double[W][T];
+    public double[][] vsdata = new double[T][T];
+    public int[][] gwdata = new int[W][T];
+    public String[] teams = new String[T];
     public void init()
     {
        try 
@@ -33,8 +35,8 @@ public class SqliteDB
             }
 
             // fill vsdata
-            for (int i=0; i<21; i++)
-                for (int j=0; j<21; j++)
+            for (int i=0; i<T; i++)
+                for (int j=0; j<T; j++)
                     vsdata[i][j] = Double.POSITIVE_INFINITY;
             r = s.executeQuery("select * from games");
             while (r.next()) {
@@ -53,8 +55,8 @@ public class SqliteDB
             }
 
             // fill gwdata
-            for (int i=0; i<10; i++)
-                for (int j=0; j<21; j++)
+            for (int i=0; i<W; i++)
+                for (int j=0; j<T; j++)
                     gwdata[i][j] = 0;
             r = s.executeQuery("select * from games");
             while (r.next()) {
@@ -73,8 +75,8 @@ public class SqliteDB
             }
 
             // fill twdata
-            for (int i=0; i<10; i++)
-                for (int j=0; j<21; j++)
+            for (int i=0; i<W; i++)
+                for (int j=0; j<T; j++)
                     twdata[i][j] = Double.POSITIVE_INFINITY;
 
             r = s.executeQuery("select * from teamweek");

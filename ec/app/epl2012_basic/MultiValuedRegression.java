@@ -36,20 +36,19 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
         // very important, remember this
         super.setup(state,base);
 
-        teamA = state.parameters.getInt(base.push("team"),null,1);
-        if (teamA<1) state.output.fatal("Team not chosen: set eval.problem.team", base.push("team")); 
+        teamA = state.parameters.getInt(base.push("teama"),null,1);
+        if (teamA<1) state.output.fatal("Team not chosen: set eval.problem.teama", base.push("teama")); 
+
+        teamB = state.parameters.getInt(base.push("teamb"),null,1);
+        if (teamB<1) state.output.fatal("Team not chosen: set eval.problem.teamb", base.push("teamb")); 
 
         db = new SqliteDB();
         db.init();
 
-        state.output.message("Chosen team: "+db.teams[teamA]);
+        state.output.message("Chosen: "+db.teams[teamA]+" vs "+db.teams[teamB]);
 
-        double expectedResult = db.twdata[9][teamA];
-        teamB = db.gwdata[9][teamA];
         db.sumdata[teamA][9].dump("a");
         db.sumdata[teamB][9].dump("b");
-
-        System.out.println("Expected output: "+expectedResult);
 
         // set up our input -- don't want to use the default base, it's unsafe here
         input = (DoubleData) state.parameters.getInstanceForParameterEq(
