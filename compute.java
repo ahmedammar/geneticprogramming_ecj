@@ -84,13 +84,18 @@ public class compute
                     continue;
                 }
                 float r = Float.parseFloat(line);
-                if (r > 1.0)
+                /*if (r > 1.0)
                 {
                     r = 1.0f;
                 }
                 if (r < -1.0)
                 {
                     r = -1.0f;
+                }*/
+                if (r > 1.0 || r < -1.0)
+                {
+                    i--;
+                    continue;
                 }
                 System.out.format("%.1f %.0f\n",r,r);
                 String x = String.format("%.0f",r);
@@ -103,7 +108,7 @@ public class compute
                 if(t == 1)
                     w++;
                 a += r;
-                System.out.format("Running Avg: %.2f (w:%.2f d:%.2f l:%.2f)\n",a/(i+1),(float)w/(i+1),(float)d/(i+1),(float)l/(i+1));
+                System.out.format("%d Running Avg: %.2f (w:%.2f d:%.2f l:%.2f)\n",i+1, a/(i+1),(float)w/(i+1),(float)d/(i+1),(float)l/(i+1));
             }
             a /= i;
             System.out.format("Average: %.2f\n",a);
