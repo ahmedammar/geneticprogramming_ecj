@@ -47,8 +47,8 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
 
         state.output.message("Chosen: "+db.teams[teamA]+" vs "+db.teams[teamB]);
 
-        db.sumdata[teamA][14].dump("a");
-        db.sumdata[teamB][14].dump("b");
+        db.sumdata[teamA][15].dump("a");
+        db.sumdata[teamB][15].dump("b");
 
         // set up our input -- don't want to use the default base, it's unsafe here
         input = (DoubleData) state.parameters.getInstanceForParameterEq(
@@ -68,7 +68,7 @@ public class MultiValuedRegression extends GPProblem implements SimpleProblemFor
             double expectedResult;
             double result;
 
-            for (gameWeek=1;gameWeek<14;gameWeek++)
+            for (gameWeek=1;gameWeek<15;gameWeek++)
             {
                 expectedResult = db.twdata[gameWeek][teamA];
                 if (expectedResult == Double.POSITIVE_INFINITY)
