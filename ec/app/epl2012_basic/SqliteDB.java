@@ -3,8 +3,8 @@ import java.sql.*;
 
 public class SqliteDB
 {
-    int T = 20 + 1;
-    int W = 16 + 1;
+    public int T = 20 + 1;
+    public int W = 17 + 1;
     public PLData[][] sumdata = new PLData[T][W];
     public double[][] twdata = new double[W][T];
     public double[][] vsdata = new double[T][T];
