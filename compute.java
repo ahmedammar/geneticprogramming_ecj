@@ -56,7 +56,7 @@ public class compute
             int l=0, w=0, d=0;
             for(i=0; i<50; i++)
             {
-                Process run = Runtime.getRuntime().exec("java -Xmn100M -Xms500M -Xmx1G -d64 ec.Evolve -file ec/app/epl2012_basic/eplbasic.params -p gp.tree.print-style=c -p eval.problem.teama="+th+" -p eval.problem.teamb="+ta);
+                Process run = Runtime.getRuntime().exec("java -Xmn100M -Xms500M -Xmx700M -d64 ec.Evolve -file ec/app/epl2012_basic/eplbasic.params -p gp.tree.print-style=c -p eval.problem.teama="+th+" -p eval.problem.teamb="+ta);
                 BufferedReader input = new BufferedReader(new InputStreamReader(run.getInputStream()));
                 String line = "";
                 String output = "";
