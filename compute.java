@@ -84,19 +84,19 @@ public class compute
                     continue;
                 }
                 float r = Float.parseFloat(line);
-                /*if (r > 1.0)
+                if (r > 1.0)
                 {
                     r = 1.0f;
                 }
                 if (r < -1.0)
                 {
                     r = -1.0f;
-                }*/
-                if (r > 1.0 || r < -1.0)
+                }
+                /*if (r > 1.0 || r < -1.0)
                 {
                     i--;
                     continue;
-                }
+                }*/
                 System.out.format("%.1f %.0f\n",r,r);
                 String x = String.format("%.0f",r);
                 int t = Integer.parseInt(x);
