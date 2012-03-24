@@ -4,7 +4,7 @@ import java.sql.*;
 public class SqliteDB
 {
     public int T = 20 + 1;
-    public int W = 23 + 1;
+    public int W = 29 + 1;
     public PLData[][] sumdata = new PLData[T][W];
     public double[][] twdata = new double[W][T];
     public double[][] vsdata = new double[T][T];
@@ -33,6 +33,13 @@ public class SqliteDB
                 current.morale = r.getInt("morale");
                 sumdata[tid][gw] = current;
             }
+            // add missing sumata (teams that didn't play)
+            for (int i=0; i<T; i++)
+                try {
+                     double t = sumdata[i][W-1].home;
+                } catch (NullPointerException e) {
+                    sumdata[i][W-1] = sumdata[i][W-2];
+                }
 
             // fill vsdata
             for (int i=0; i<T; i++)
