@@ -4,7 +4,7 @@ import java.sql.*;
 public class SqliteDB
 {
     public int T = 20 + 1;
-    public int W = 29 + 1;
+    public int W = 33 + 1;
     public PLData[][] sumdata = new PLData[T][W];
     public double[][] twdata = new double[W][T];
     public double[][] vsdata = new double[T][T];

@@ -5,7 +5,7 @@ import sqlite3
 import re
 
 db_file="./epldata2012.db"
-gw_file="./predictions/gw30"
+gw_file="./predictions/gw34"
 
 con1=sqlite3.connect(db_file)
 c1=con1.cursor()
